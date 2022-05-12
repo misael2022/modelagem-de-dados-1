@@ -65,3 +65,46 @@ INSERT INTO produtos(nome, preco, quantidade, descricao, fabricante_id) VALUES
     'Tablet com a versão 12 do sistema operacional da Google, possui tela de 10 polegadas e armazenamento de 64GB.',
     5 -- Samsung
 );
+
+## SELECT
+
+SELECT nome, preco FROM produtos;
+SELECT preco, nome FROM produtos;
+
+SELECT nome, preco FROM produtos WHERE preco < 3000;
+
+SELECT nome, preco FROM produtos 
+WHERE preco < 300 AND preco > 2000;
+
+SELECT nome, preco FROM produtos 
+WHERE fabricante_id = 3 OR fabricante_id = 1;
+
+-- comentario
+SELECT nome, descricao FROM  produtos
+ORDER BY nome; -- CRESCENTE (PADRÃO)
+
+SELECT nome, descricao FROM produtos
+ORDER BY preco DESC; -- DECRECENTE
+
+SELECT nome, preco, quantidade, fabricante_id
+FROM produtos;
+
+SELECT
+    produtos.nome AS Produto,
+    fabricantes.nome AS fabricante,
+    produtos.preco AS Preco,
+    produtos.quantidade AS Quantidades
+FROM produtos INNER JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id;
+
+-- INNER JOIN: comando que permite juntar duas ou mais tabelas
+-- ON: comandos para indicar a maneira como as tabelas são juntadas
+-- AS: comando que permite dar um apelido para as colunas
+
+## UPDATE
+UPDATE fabricante SET nome = 'LG do Brasil';
+WHERE id = 4; -- SEMPRE USE WHERE, SEMPRE DE UMA CONDIÇÃO
+
+## DELETE
+DELETE FROM produtos
+WHERE id = 4; -- SEMPRE USE WHERE, SEMPRE DE UMA CONDIÇÃO
